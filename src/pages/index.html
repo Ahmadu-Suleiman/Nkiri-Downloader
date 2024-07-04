@@ -9,26 +9,35 @@
 	<body>
 		<header>
 			<div class="logo"><img src="nkiri-logo.png" alt="nkiri-logo" /></div>
-            <div class="text"><h1>Nkiri Downloader</h1><p>Movies/Series</p></div>  
+			<div class="text">
+				<h1>Nkiri Downloader</h1>
+				<p>Movies/Series</p>
+			</div>
 		</header>
-        <main>
-            <form action="/download" method="post">
-                <input type="text" placeholder="Paste movie or series page link..." value="">
-                <input type="submit" value="Download">
-            </form>
-        </main>
+		<main>
+			<form action="/download" method="post">
+				<input
+					type="text"
+					placeholder="Paste movie or series page link..."
+					value=""
+					pattern="^https:\/\/nkiri\.com\/.*$"
+					title="Link must start with https://nkiri.com/" />
+				<input type="submit" value="Download" />
+			</form>
+		</main>
 	</body>
 </html>
 <script>
-    const downloadButton = document.querySelector('input[type="submit"]');
-    const inputField = document.querySelector('input[type="text"]');
- 
+	const downloadButton = document.querySelector('input[type="submit"]');
+	const inputField = document.querySelector('input[type="text"]');
 
-    inputField.addEventListener('input',()=>{
-        inputField.value += inputField.innerHTML;
-    })
-    downloadButton.addEventListener('click',(e)=>{
-        e.preventDefault();
-        console.log(inputField.value);
-    });
+	inputField.addEventListener("input", () => {
+		inputField.value += inputField.innerHTML;
+	});
+	downloadButton.addEventListener("click", (e) => {
+		console.log(inputField.value);
+		if (inputField.value == "") {
+			e.preventDefault();
+		}
+	});
 </script>
