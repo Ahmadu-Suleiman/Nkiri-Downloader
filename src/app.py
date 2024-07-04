@@ -12,15 +12,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return redirect("/form")
+    return render_template('index.html')
 
 
-@app.route('/form', methods=['GET'])
-def show_form():
-    return render_template('form.html')
-
-
-@app.route('/process', methods=['POST'])
+@app.route('/download', methods=['POST'])
 def process_form():
     link = request.form.get('link')
 
