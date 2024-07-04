@@ -1,10 +1,38 @@
-from src import download
-from src import utility
+import asyncio
+import socket
+import webbrowser
 
-url = 'https://nkiri.com/hard-home-2024-download-hollywood-movie/'
+from flask import Flask, request, render_template, redirect
+from waitress import serve
 
-page = utility.get_page(url)
-links = utility.get_button_links(page)
+from src.download import start_downloads
 
-if links:
-    download.download_multiple(links)
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return redirect("/form")
+
+
+@app.route('/form', methods=['GET'])
+def show_form():
+    return render_template('form.html')
+
+
+@app.route('/process', methods=['POST'])
+def process_form():
+    link = request.form.get('link')
+
+    asyncio.run(start_downloads(link))
+    return render_template('download.html')
+
+
+if __name__ == '__main__':
+    hostname = socket.gethostname()
+    local_ip = socket.gethostbyname(hostname)
+    port = 8080
+    url = f'http://{local_ip}:{port}/'
+
+    webbrowser.open_new(url)
+    serve(app, host=local_ip, port=port)
