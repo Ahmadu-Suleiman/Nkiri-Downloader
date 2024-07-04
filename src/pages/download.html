@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Download</title>
+		<style>
+			* {
+				box-sizing: border-box;
+				padding: 0;
+				margin: 0;
+				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+			}
+			.info {
+				text-align: center;
+				color: rgb(83, 82, 82);
+                margin-top: 50px;
+			}
+			.loader-container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 40dvh;
+				position: absolute; /* Position the div absolutely */
+				top: 30%; /* Move the div down by half its height */
+				left: calc(50vw - 50%); /* Center the div horizontally */
+			}
+			.loader {
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				display: inline-block;
+				border-top: 4px solid #7e0707;
+				border-right: 4px solid transparent;
+				box-sizing: border-box;
+				animation: rotation 1s linear infinite;
+			}
+			.loader::after {
+				content: "";
+				box-sizing: border-box;
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				border-left: 4px solid rgb(166, 201, 231);
+				border-bottom: 4px solid transparent;
+				animation: rotation 0.5s linear infinite reverse;
+			}
+			@keyframes rotation {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="info">
+			<h1>An automated browser will start the download soon <br>This will take a minute...</h1>
+		</div>
+		<div class="loader-container"><span class="loader"></span></div>
+	</body>
+</html>
