@@ -7,7 +7,7 @@ from selenium.common import ElementClickInterceptedException
 from selenium.webdriver import ChromeOptions
 from selenium.webdriver.common.by import By
 
-from src import utility
+import utility
 
 
 def get_ad_blocker():

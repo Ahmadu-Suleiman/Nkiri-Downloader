@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-from src import download
-
 
 def get_page(_url):
     response = requests.get(_url, verify=False)

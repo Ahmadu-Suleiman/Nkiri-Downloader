@@ -2,10 +2,10 @@ import asyncio
 import socket
 import webbrowser
 
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template
 from waitress import serve
 
-from src.download import start_downloads
+import download
 
 app = Flask(__name__)
 
@@ -19,7 +19,7 @@ def index():
 def process_form():
     link = request.form.get('link')
 
-    asyncio.run(start_downloads(link))
+    asyncio.run(download.start_downloads(link))
     return render_template('download.html')
 
 
