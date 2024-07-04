@@ -54,11 +54,12 @@ form {
     gap: 20px;
 }
 input[type="text"] {
-	width: 80%;
+	min-width: 80%;
     height: 70%;
     border: 1px solid rgb(168, 164, 164);
     font-size: large;
     padding-left: 10px;
+	outline: none;
 }
 
 input[type="text"]:focus{
