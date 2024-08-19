@@ -36,16 +36,9 @@ def _download_multiple(links):
     options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(options=options)
 
-    # remove adblocker tab
-    # original_window = driver.current_window_handle
-    # time.sleep(6)
-    # handles = driver.window_handles
-    # driver.switch_to.window(handles[-1])
-    # driver.close()
-    # driver.switch_to.window(original_window)
-
     time.sleep(6)
     driver.refresh()
+
     for link in links:
         print(link)
         _downloader(driver, link)
